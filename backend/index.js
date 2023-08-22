@@ -9,6 +9,7 @@ app.use(express.urlencoded({extended: true}));
  
 //Archivo de rutas definidas
 app.use(require('./routes/productos'));
+app.use(require('./routes/usuario'));
 
 
 app.listen(3300,() => {
