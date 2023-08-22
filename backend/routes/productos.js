@@ -1,8 +1,5 @@
 const express = require("express");
 const app = express();
-
- 
-
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -11,72 +8,74 @@ dotenv.config();
 //conectar con la base de datos
 const {connection} = require("../config.db");
 
-//Utilizando el método Get 
-const getProductos = (request, response) => {
-    connection.query("SELECT * FROM productos", 
+
+
+//Metodos GET, POST, DELETE 
+
+
+const getBaseProductos = (request, response) => {
+    connection.query("CALL getProductsDB()", 
     (error, results) => {
         if(error)
             throw error;
-        response.status(200).json(results);
+        response.status(200).json(results[0]);
     });
 };
 
-//ruta de consumo
-app.route("/productos")
-.get(getProductos);
+const getProducto = (request, response) => {
+    const id = request.params.id;
+    connection.query("CALL getProduct(?)", [id],
+        (error, results) => {
+            console.log(results);
+            if (error) throw error;
+            response.status(200).json(results[0]);
+        });
+};
 
-
-
-
-// Utilizando el Metodo post
 
 const postProductos = (request, response) => {
-    const {nombre, precio, stock} = request.body;    
-    connection.query("insert into productos(nombre,precio,stock) values ( ?, ? , ?)",
-     [nombre, precio, stock],
+    const { nombre_producto, id_categoria, precio, stock, stock_minimo } = request.body; 
+    connection.query("CALL createProduct(?,?,?,?,?)",
+     [nombre_producto, id_categoria, precio, stock, stock_minimo],
     (error, results) => {
         if(error)
             throw error;
-        response.status(201).json([ 'success','Producto guardado']);
+        response.status(201).json({ "datos creados correctamente": results[0] });
     });
 };
 
-//ruta de consumo
-app.route("/productos")
-.post(postProductos);
 
+const putProductos = (request, response) => {
+    const { nombre_producto, id_categoria, precio, stock, stock_minimo, id_producto } = request.body;    
+    connection.query("CALL updateProduct(?,?,?,?,?,?)",
+     [nombre_producto, id_categoria, precio, stock, stock_minimo, id_producto],
+    (error, results) => {
+        if(error)
+            throw error;
+        response.status(201).json({ "datos actualizados correctamente": results });
+    });
+};
 
-// usando el metodo delete
 
 const deleteProductos = (request, response) => {
     const {id} = request.params;    
-    connection.query("delete from productos where id=?",
+    connection.query("CALL deleteProduct(?) ",
      [id],
     (error, results) => {
         if(error)
             throw error;
-        response.status(201).json([ 'success','Producto Eliminado']);
+        response.status(201).json({ "datos eliminados exitosamente": results.affectedRows });
     });
 };
 
-//ruta de consumo
-app.route("/productos/:id")
-.delete(deleteProductos);
 
-// usando el metodo put
-const putProductos = (request, response) => {
-    const {nombre, precio, stock,id} = request.body;    
-    connection.query("update productos set nombre=?, precio=?, stock=? where id=?",
-     [nombre, precio, stock,id],
-    (error, results) => {
-        if(error)
-            throw error;
-        response.status(201).json([ 'success','Producto Modificado']);
-    });
-};
 
-//ruta de consumo
-app.route("/productos")
-.put(putProductos);
+
+
+app.route("/productos").get(getBaseProductos);
+app.route("/productos/:id").get(getProducto);
+app.route("/productos").post(postProductos);
+app.route("/productos").put(putProductos);
+app.route("/productos/:id").delete(deleteProductos);
 
 module.exports = app;
