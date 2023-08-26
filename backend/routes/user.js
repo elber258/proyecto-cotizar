@@ -72,10 +72,10 @@ const deleteUsuario = (request, response) => {
 
 
 
-app.route("/usuario").get(getBaseUsuarios);
-app.route("/usuario/:id").get(getUsuario);
-app.route("/usuario").post(postUsuario);
-app.route("/usuario").put(putUsuario);
-app.route("/usuario/:id").delete(deleteUsuario);
+app.route("/user").get(getBaseUsuarios);
+app.route("/user/:id").get(getUsuario);
+app.route("/user").post(postUsuario);
+app.route("/user").put(putUsuario);
+app.route("/user/:id").delete(deleteUsuario);
 
 module.exports = app;

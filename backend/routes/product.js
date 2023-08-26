@@ -71,10 +71,10 @@ const deleteProductos = (request, response) => {
 
 
 
-app.route("/productos").get(getBaseProductos);
-app.route("/productos/:id").get(getProducto);
-app.route("/productos").post(postProductos);
-app.route("/productos").put(putProductos);
-app.route("/productos/:id").delete(deleteProductos);
+app.route("/product").get(getBaseProductos);
+app.route("/product/:id").get(getProducto);
+app.route("/product").post(postProductos);
+app.route("/product").put(putProductos);
+app.route("/product/:id").delete(deleteProductos);
 
 module.exports = app;
