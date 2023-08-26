@@ -5,7 +5,6 @@ import logo from '../../COTIZAR.COM.png';
 
 
 
-
 class Menu extends React.Component {
  
   render() {
@@ -36,7 +35,7 @@ class Menu extends React.Component {
 									<a class="nav-link active" aria-current="page" href="#" >Home</a>
 									</li>
 									<li class="nav-item">
-									<a class="nav-link" href="#">Log in</a>
+									<a class="nav-link" src="../../pages/Login.js">Log in</a>
 									</li>
 									<li class="nav-item">
 									<a class="nav-link" href="#">Register here</a>

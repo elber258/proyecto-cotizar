@@ -1,0 +1,22 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #eeeeee;
+  
+
+  
+}
+.App-header-div-inicio-sesion{
+  z-index:initial;
+  align-items: end;
+  
+}
+.App-logo{
+  width: 50px;
+
+}
+
+
+
