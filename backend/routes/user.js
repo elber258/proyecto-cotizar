@@ -14,7 +14,7 @@ const {connection} = require("../config.db");
 
 
 const getBaseUsuarios = (request, response) => {
-    connection.query("CALL getUsuariosDB()", 
+    connection.query("CALL getUsersDB()", 
     (error, results) => {
         if(error)
             throw error;
@@ -24,7 +24,7 @@ const getBaseUsuarios = (request, response) => {
 
 const getUsuario = (request, response) => {
     const id = request.params.id;
-    connection.query("CALL getUsuario(?)", [id],
+    connection.query("CALL getUser(?)", [id],
         (error, results) => {
             console.log(results);
             if (error) throw error;
@@ -35,7 +35,7 @@ const getUsuario = (request, response) => {
 
 const postUsuario = (request, response) => {
     const { id_usuario, id_tipo_documento, nombre_usuario, id_ciudad, direccion, rol, estado, contraseña_usuario, correo_usuario, telefono_usuario } = request.body; 
-    connection.query("CALL createUsuario(?,?,?,?,?,?,?,?,?,?)",
+    connection.query("CALL createUser(?,?,?,?,?,?,?,?,?,?)",
      [id_usuario, id_tipo_documento, nombre_usuario, id_ciudad, direccion, rol, estado, contraseña_usuario, correo_usuario, telefono_usuario],
     (error, results) => {
         if(error)
@@ -47,7 +47,7 @@ const postUsuario = (request, response) => {
 
 const putUsuario = (request, response) => {
     const { id_tipo_documento, nombre_usuario, id_ciudad, direccion, rol, estado, contraseña_usuario, correo_usuario, telefono_usuario, id_usuario } = request.body;    
-    connection.query("CALL updateUsuario(?,?,?,?,?,?)",
+    connection.query("CALL updateUser(?,?,?,?,?,?)",
      [id_tipo_documento, nombre_usuario, id_ciudad, direccion, rol, estado, contraseña_usuario, correo_usuario, telefono_usuario, id_usuario],
     (error, results) => {
         if(error)
@@ -59,7 +59,7 @@ const putUsuario = (request, response) => {
 
 const deleteUsuario = (request, response) => {
     const {id} = request.params;    
-    connection.query("CALL deleteUsuario(?) ",
+    connection.query("CALL deleteUser(?)",
      [id],
     (error, results) => {
         if(error)

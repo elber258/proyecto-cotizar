@@ -12,7 +12,6 @@ const {connection} = require("../config.db");
 
 //Metodos GET, POST, DELETE 
 
-
 const getBaseProductos = (request, response) => {
     connection.query("CALL getProductsDB()", 
     (error, results) => {
