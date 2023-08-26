@@ -16,6 +16,5 @@ app.listen(3300,() => {
     console.log("Servidor ejecutandose en el puerto 3300");
 });
 
- 
 
 module.exports = app;
