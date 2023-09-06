@@ -1,31 +1,7 @@
-import React from 'react';
-import Menu from '../components/menu/Menu'; // Componente Menú ( Barra de menu del proyecto) 
+import React from "react";
 
-import Footer from '../components/Footer/Footer';// Componente Footer (Pie de pagina del proyecto) 
-//import { Card } from 'reactstrap';
-//import Productos from '../components/productos/productos';
+const Home = () => {
+  return <div></div>;
+};
 
- 
-class Home extends React.Component {
- 
-	render() {
- 
-		return(
- 
-			<>
- 
-			<Menu /> 
-                   
-	  		<Footer />
- 
-	  		</>
- 
-		)
- 
-	}
- 
-}
-
-
- 
 export default Home;

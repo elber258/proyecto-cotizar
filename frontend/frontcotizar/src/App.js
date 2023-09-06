@@ -1,32 +1,38 @@
-import React from 'react';
-import './assets/css/index.css';
+import React from "react";
+import "./assets/css/index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import Register from "./pages/Register";
-import Quotes from "./pages/Quotes";
-import Dashboard from './pages/Dashboard';
-  //import RequireAuth from './Auth/Auth.js';
-  
+import { Login, Home, Register, Dashboard } from "./pages";
+import AuthProvider from "./Auth/AuthCtx";
+import Footer from "components/footer/Footer";
+import Layout from "components/layout/Layout";
+import RequireAuth from "Auth/auth";
 
-function App(){
+//import RequireAuth from './Auth/Auth.js';
 
-    return (
-     <div className='App'>
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/dashboard"
+              element={
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
+              }
+            />
+          </Route>
+        </Routes>
+      </BrowserRouter>
 
-            <BrowserRouter>
-                <Routes>
-                    
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/quotes" element={<Quotes />} />
-                    <Route path="/dashboard" element={<Dashboard/>} />
-                </Routes>
-            </BrowserRouter>
-     </div>
-            
-      );
-    }
-    
+      <Footer />
+    </div>
+  );
+}
+
 export default App;

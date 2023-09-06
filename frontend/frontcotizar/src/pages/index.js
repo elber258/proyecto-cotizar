@@ -1,5 +1,6 @@
-export { defualt as Home} from './Home';
-export { defualt as Login} from './Login';
-export { defualt as Register} from './Register';
-export { defualt as Quotes} from './Quotes';
-export { defualt as Dashboard} from './Dashboard';
+export { default as Home} from './Home';
+export { default as Login} from './Login';
+export { default as Register} from './Register';
+export { default as Dashboard} from './Dashboard';
+
+

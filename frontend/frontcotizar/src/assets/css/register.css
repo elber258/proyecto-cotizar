@@ -1,0 +1,17 @@
+.newRegHeader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.registerButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.registersection{
+  margin-top: 160px;
+  height: 1100px;
+}

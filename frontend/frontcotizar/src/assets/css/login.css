@@ -6,6 +6,37 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+.loginsection{
+  margin-top: 160px;
+  height: 700px;
+}
+
+.loginHeader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  flex-direction: column;
+}
+
+.loginButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.socialnetworkBtn{
+  margin-left: 6px;
+}
+
+.loginFooter{
+  height: 68px;
+}
+
+.socialnetworkicon{
+height: 24px;
+}
   
   
   

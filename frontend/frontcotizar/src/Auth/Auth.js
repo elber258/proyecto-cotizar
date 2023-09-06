@@ -1,17 +1,10 @@
-import React from 'react';
-
-
-import {
-  useLocation,
-  Navigate,
-} from "react-router-dom";
-
+import React from "react";
+import { useLocation, Navigate } from "react-router-dom";
+import { AuthContext } from "./AuthCtx";
 
 function useAuth() {
-  return React.useContext('');
+  return React.useContext(AuthContext);
 }
-
-
 
 function RequireAuth({ children }) {
   let auth = useAuth();
@@ -27,5 +20,17 @@ function RequireAuth({ children }) {
 
   return children;
 }
+
+export const fakeAuthProvider = {
+  isAuthenticated: false,
+  signin(callback) {
+    fakeAuthProvider.isAuthenticated = true;
+    setTimeout(callback, 100);
+  },
+  signout(callback) {
+    fakeAuthProvider.isAuthenticated = false;
+    setTimeout(callback, 100);
+  },
+};
 
 export default RequireAuth;

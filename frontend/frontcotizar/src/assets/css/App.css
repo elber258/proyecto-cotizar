@@ -1,22 +1,38 @@
-.App {
-  text-align: center;
+body{
+  padding-bottom: 28px;
 }
 
-.App-header {
-  background-color: #eeeeee;
-  
 
-  
-}
-.App-header-div-inicio-sesion{
-  z-index:initial;
-  align-items: end;
-  
-}
-.App-logo{
+
+.App-logo {
   width: 50px;
-
 }
 
+.footer {
+  display: flex;
+  align-items: center;
+}
 
+.socialNetworkIconsLayout {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.socialNetworkIcons {
+  color: #000;
+  font-size: 24px;
+  margin-bottom: 8px;
+}
 
+.footerText{
+text-align: center;
+margin-bottom: 4px;
+}
+
+.productsCardHeader{ 
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction: column;
+  height: 150px;
+}
